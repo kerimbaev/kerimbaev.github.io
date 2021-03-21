@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>To Do List</title>
+        <style>
+        body {
+            font-family: Arial;
+            margin:0px;  
+        }
+            header {
+                margin: 0;
+                background-color: #222222;
+                color: #a2a8ad;
+                font-size: 20px;
+                padding:20px;
+                padding-left:40px;
+            }
+            h1 {
+                font-size: 30px;
+            }
+            #newitem {
+                margin-left: 12.5%;
+                margin-right: auto;
+                margin-top: 15%;
+            }
+            p {
+                font-weight: bold;
+            }
+            #v, #v:hover {
+                margin: 0% 5% 5% 5%;
+                margin-right: 2%;
+                width: 80%; 
+                height: 40px;
+                padding-left: 15px;
+                border: 1px solid #a2a8ad;
+                border-radius: 6px;
+            }
+            #v:focus {
+                border: 1px solid #a2a8ad;
+                border-radius: 6px;
+                
+            }
+            #butn {
+                background-color: lightblue;
+                border: 1px solid #a2a8ad;
+                border-radius: 5px;
+                height: 45px;
+                width: 60px;
+                font-size: 14px;
+            }
+            ul {
+                list-style-type: none;
+                width: 60%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                
+            }
+            ul li {
+                padding: 20px;
+                border: 1px solid #a2a8ad;
+                border-radius: 10px;
+            }
+            input:checked+span {
+                text-decoration: line-through;
+            }
+            ul li button{
+                background-image: url('https://freepikpsd.com/wp-content/uploads/2020/12/delete-symbol-png-7.png');
+                background-color: #ffff;
+                float: right;
+                height: 19px;
+                width: 17px;
+                background-color: #ffff;
+                border: 0px solid #a2a8ad;
+                background-size: contain; 
+                border-radius: 2px;
+            }
+        </style>
+    </head>
+    <body>
+         <header>
+         To-do List
+         </header>
+         <div id="newitem">
+         <p>ToDo List</p>
+         <input id="v" type="text" placeholder="New Task" autofocus>
+         <button id="butn" onclick=add()>Add</button>
+         <ul id="list"><ul>
+         </div>
+         <script>
+            function add(){
+                var li = document.createElement("li");
+                var ul = document.getElementById("list"); 
+                var input = document.createElement("input");
+                var span = document.createElement("span");
+                var btn = document.createElement("button");
+                var inputtext = document.getElementById("v").value;
+                span.innerHTML = inputtext;
+                document.getElementById("v").value = "";
+                input.setAttribute("type","checkbox");
+                btn.addEventListener('click', del);
+                li.appendChild(span);
+                li.appendChild(btn);
+                ul.appendChild(li);
+                li.appendChild(input)
+            }
+            function del(){
+                this.parentNode.remove();
+            }
+         </script>
+    </body>
+</html>
